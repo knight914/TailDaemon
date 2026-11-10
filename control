@@ -1,6 +1,6 @@
 Package: com.knight914.taildaemon
 Name: TailDaemon Capability Probe
-Version: 0.0.1
+Version: 0.0.2
 Architecture: iphoneos-arm64
 Description: Temporary utun capability probe. NOT a working Tailscale replacement.
 Maintainer: knight914

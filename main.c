@@ -1,4 +1,4 @@
-// TailDaemon 0.0.1: capability probe, NOT a Tailscale client.
+// TailDaemon 0.0.2: capability probe, NOT a Tailscale client.
 // Creates an unconfigured utun interface, prints its name, then closes it.
 // Never changes addresses, routes, DNS, VPN state, or authentication.
 #include <stdio.h>
@@ -23,7 +23,7 @@ struct sockaddr_ctl {
 #define CTLIOCGINFO _IOWR('N', 3, struct ctl_info)
 #define TD_UTUN_OPT_IFNAME 2
 int main(void) {
-    printf("TailDaemon capability probe 0.0.1 uid=%u\n", (unsigned)getuid());
+    printf("TailDaemon capability probe 0.0.2 uid=%u\n", (unsigned)getuid());
     int fd = socket(PF_SYSTEM, SOCK_DGRAM, SYSPROTO_CONTROL);
     if (fd < 0) { perror("socket(PF_SYSTEM)"); return 1; }
     struct ctl_info info;

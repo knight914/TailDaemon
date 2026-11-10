@@ -1,4 +1,6 @@
 {
-  "version": "0.0.1",
-  "scope": "utun capability probe; not a working Tailscale replacement"
+  "version": "0.0.2",
+  "previous_run": 42869003394,
+  "reason": "Unavailable roothide toolchain revision; pin current verified upstream revision",
+  "scope": "utun probe only"
 }

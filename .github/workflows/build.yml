@@ -40,7 +40,7 @@ jobs:
             revision: 6e7b8c40e0f5f9f5b2377800dc1e42cd2560d24a
           - environment: roothide
             repository: roothide/theos
-            revision: 3ac89c984ec652fd16bcd91b33ae16de45ce76fa
+            revision: 958fea4f779943505b15b93c88bb4db8d97b346d
     env:
       THEOS: ${{ github.workspace }}/toolchains/${{ matrix.environment }}
       THEOS_PACKAGE_SCHEME: ${{ matrix.environment }}
