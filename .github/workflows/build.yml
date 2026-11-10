@@ -1,5 +1,8 @@
 name: Build TailDaemon Probe
 on:
+  push:
+    branches: ['feat/**']
+    paths: ['VERSION', '.github/workflows/build.yml']
   workflow_dispatch:
 permissions:
   contents: read
