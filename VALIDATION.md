@@ -22,5 +22,12 @@ Capability-stage experiment only. Neither deb implements Tailscale authenticatio
 - This proves API presence only. No utun was created inside the official app. Sandbox privileges and independent daemon behavior were NOT proven.
 - SSH LAN and loopback returned Operation not permitted. No package uploaded or installed, no launch daemon created, no routes/DNS/VPN/authentication modified.
 
+## Follow-up runtime tests
+- Separately authorized temporary attach to frida-server PID 7353 reported UID 0. Correct ARM64 variadic ioctl invocation successfully opened PF_SYSTEM, queried utun control, connected and obtained interface utun7. The descriptor was immediately closed successfully. No addresses/routes/DNS were configured. Script unloaded and session detached.
+- Initial fixed-argument ioctl declaration produced EFAULT (14); corrected to variadic ABI before retest. This was a probe binding error, not evidence of missing kernel support.
+- Separately authorized standalone attempt: extracted the unchanged roothide 0.0.2 executable, copied it to a uniquely created /private/var/tmp directory through a temporary frida-server session, and attempted posix_spawn with output capture. posix_spawn returned 202; no child started. The precise cause is NOT established; do not label this as a verified signature issue without evidence.
+- Binary and output were unlinked and temporary directory removed successfully. Script unloaded and session detached. No deb installed, no persistent services, no system signing/security changes, no route/DNS/VPN/authentication changes.
+- A root frida-server's utun success does not prove equivalent permission or launch behavior for a new independently signed executable.
+
 ## Outstanding
-Requires authorized independent execution on device to prove utun access. Full iOS Tailscale/router/DNS integration, coexistence, authentication UX, secure storage, and both jailbreak runtime environments remain unimplemented/unverified. These artifacts must not be described as a working Tailscale replacement.
+Requires successful authorized independent execution on device to prove utun access. Full iOS Tailscale/router/DNS integration, coexistence, authentication UX, secure storage, and both jailbreak runtime environments remain unimplemented/unverified. These artifacts must not be described as a working Tailscale replacement.
